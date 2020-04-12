@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.yyzx.admin.service.mapper.SysRolePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.hy.yyzx.common.model.SysRolePermission">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="roleid" jdbcType="INTEGER" property="roleid" />
+    <result column="menukey" jdbcType="VARCHAR" property="menukey" />
+    <result column="actions" jdbcType="VARCHAR" property="actions" />
+    <result column="datascope" jdbcType="INTEGER" property="datascope" />
+    <result column="hospitalids" jdbcType="VARCHAR" property="hospitalids" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, roleid, menukey, actions, datascope, hospitalids
+  </sql>
+  <select id="selectByExample" parameterType="com.hy.yyzx.common.model.SysRolePermissionExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_role_permission
+    <if test="groupByClause != null">
+      group by ${groupByClause}
+    </if>
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_role_permission
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_role_permission
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hy.yyzx.common.model.SysRolePermissionExample">
+    delete from sys_role_permission
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hy.yyzx.common.model.SysRolePermission">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_role_permission (roleid, menukey, actions, 
+      datascope, hospitalids)
+    values (#{roleid,jdbcType=INTEGER}, #{menukey,jdbcType=VARCHAR}, #{actions,jdbcType=VARCHAR}, 
+      #{datascope,jdbcType=INTEGER}, #{hospitalids,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hy.yyzx.common.model.SysRolePermission">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_role_permission
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleid != null">
+        roleid,
+      </if>
+      <if test="menukey != null">
+        menukey,
+      </if>
+      <if test="actions != null">
+        actions,
+      </if>
+      <if test="datascope != null">
+        datascope,
+      </if>
+      <if test="hospitalids != null">
+        hospitalids,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleid != null">
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="menukey != null">
+        #{menukey,jdbcType=VARCHAR},
+      </if>
+      <if test="actions != null">
+        #{actions,jdbcType=VARCHAR},
+      </if>
+      <if test="datascope != null">
+        #{datascope,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalids != null">
+        #{hospitalids,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hy.yyzx.common.model.SysRolePermissionExample" resultType="java.lang.Long">
+    select count(1) from sys_role_permission
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_role_permission
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleid != null">
+        roleid = #{record.roleid,jdbcType=INTEGER},
+      </if>
+      <if test="record.menukey != null">
+        menukey = #{record.menukey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actions != null">
+        actions = #{record.actions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.datascope != null">
+        datascope = #{record.datascope,jdbcType=INTEGER},
+      </if>
+      <if test="record.hospitalids != null">
+        hospitalids = #{record.hospitalids,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_role_permission
+    set id = #{record.id,jdbcType=INTEGER},
+      roleid = #{record.roleid,jdbcType=INTEGER},
+      menukey = #{record.menukey,jdbcType=VARCHAR},
+      actions = #{record.actions,jdbcType=VARCHAR},
+      datascope = #{record.datascope,jdbcType=INTEGER},
+      hospitalids = #{record.hospitalids,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hy.yyzx.common.model.SysRolePermission">
+    update sys_role_permission
+    <set>
+      <if test="roleid != null">
+        roleid = #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="menukey != null">
+        menukey = #{menukey,jdbcType=VARCHAR},
+      </if>
+      <if test="actions != null">
+        actions = #{actions,jdbcType=VARCHAR},
+      </if>
+      <if test="datascope != null">
+        datascope = #{datascope,jdbcType=INTEGER},
+      </if>
+      <if test="hospitalids != null">
+        hospitalids = #{hospitalids,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hy.yyzx.common.model.SysRolePermission">
+    update sys_role_permission
+    set roleid = #{roleid,jdbcType=INTEGER},
+      menukey = #{menukey,jdbcType=VARCHAR},
+      actions = #{actions,jdbcType=VARCHAR},
+      datascope = #{datascope,jdbcType=INTEGER},
+      hospitalids = #{hospitalids,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

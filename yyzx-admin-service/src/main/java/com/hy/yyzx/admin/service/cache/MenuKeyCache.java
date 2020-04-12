@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * 用户当前使用菜单缓存
+ * @Author: Jason
+ * @DateTime: 2020/4/12 20:06
+ * @Description: 菜单缓存
  */
 @Component
 public class MenuKeyCache {

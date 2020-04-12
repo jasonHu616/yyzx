@@ -8,7 +8,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * @author Jason
+ * 自动生成工具类
+ */
 public class Generator {
     
     public void generator() throws Exception{

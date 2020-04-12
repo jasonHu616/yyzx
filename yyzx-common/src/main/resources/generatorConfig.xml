@@ -161,7 +161,7 @@
         <commentGenerator type="me.jason.generator.CommentGenerator"/>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://localhost:3306/test?characterEncoding=utf8&amp;useSSL=false"
+                        connectionURL="jdbc:mysql://localhost:3306/yyzx?characterEncoding=utf8&amp;useSSL=false"
                         userId="root" password="123456">
         </jdbcConnection>
         <javaTypeResolver>
@@ -185,36 +185,8 @@
                                implementationPackage = "com.hy.yyzx.admin.service.service.impl" targetProject="D:/Workspace/yyzx/yyzx-admin-service/src/main/java">
             <property name="enableSubPackages" value="false" />
         </javaServiceGenerator>
-        <!--<table tableName="%" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+       <!-- <table tableName="sys_user" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
-        </table>
-        <table tableName="adv_advice_order" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="imgs" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="otr_opinion" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="imgs" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="reback" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="log_member_login" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="useragent" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="postdata" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="mem_account_patient_disease" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="img" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="mem_doctor" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="resume" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="doctorcardimg" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="proimg" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="jobcardimg" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
         <table tableName="sys_config" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
@@ -222,75 +194,10 @@
             <columnOverride column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
             <columnOverride column="value" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
-        <table tableName="sys_text" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+        <table tableName="sys_log_login" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="sys_bug" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="imgs" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="returnimgs" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="web_article" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="description" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="web_channel" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="web_ad" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="mem_doctor" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="scientific" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="resume" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="doctorcardimg" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="proimg" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="jobcardimg" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="his_pay_order" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="web_ad_content" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="sre_disease" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="hos_category" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="remark" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="hos_public" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="otr_comment" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="imgs" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="hos_public" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="adv_chat_history" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="ext" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </table>
-        <table tableName="adv_state_answer" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
-            <generatedKey column="id" sqlStatement="MySql" identity="true" />
-            <columnOverride column="textanswer" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>-->
-        <table tableName="sys_user" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+        <table tableName="sys_role_permission" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
             <generatedKey column="id" sqlStatement="MySql" identity="true" />
         </table>
     </context>

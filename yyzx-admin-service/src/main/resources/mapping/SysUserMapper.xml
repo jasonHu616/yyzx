@@ -3,7 +3,21 @@
 <mapper namespace="com.hy.yyzx.admin.service.mapper.SysUserMapper">
   <resultMap id="BaseResultMap" type="com.hy.yyzx.common.model.SysUser">
     <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="realname" jdbcType="VARCHAR" property="realname" />
+    <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    <result column="admintype" jdbcType="INTEGER" property="admintype" />
+    <result column="isfreeze" jdbcType="INTEGER" property="isfreeze" />
+    <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
+    <result column="createby" jdbcType="INTEGER" property="createby" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateby" jdbcType="INTEGER" property="updateby" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="errorcount" jdbcType="INTEGER" property="errorcount" />
+    <result column="errortime" jdbcType="TIMESTAMP" property="errortime" />
+    <result column="isclose" jdbcType="INTEGER" property="isclose" />
+    <result column="roleid" jdbcType="INTEGER" property="roleid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -64,7 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username
+    id, phone, username, realname, pwd, admintype, isfreeze, isdelete, createby, createtime, 
+    updateby, updatetime, errorcount, errortime, isclose, roleid
   </sql>
   <select id="selectByExample" parameterType="com.hy.yyzx.common.model.SysUserExample" resultMap="BaseResultMap">
     select
@@ -104,8 +119,18 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sys_user (username)
-    values (#{username,jdbcType=VARCHAR})
+    insert into sys_user (phone, username, realname, 
+      pwd, admintype, isfreeze, 
+      isdelete, createby, createtime, 
+      updateby, updatetime, errorcount, 
+      errortime, isclose, roleid
+      )
+    values (#{phone,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, 
+      #{pwd,jdbcType=VARCHAR}, #{admintype,jdbcType=INTEGER}, #{isfreeze,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{createby,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updateby,jdbcType=INTEGER}, #{updatetime,jdbcType=TIMESTAMP}, #{errorcount,jdbcType=INTEGER}, 
+      #{errortime,jdbcType=TIMESTAMP}, #{isclose,jdbcType=INTEGER}, #{roleid,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.hy.yyzx.common.model.SysUser">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -113,13 +138,97 @@
     </selectKey>
     insert into sys_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="phone != null">
+        phone,
+      </if>
       <if test="username != null">
         username,
       </if>
+      <if test="realname != null">
+        realname,
+      </if>
+      <if test="pwd != null">
+        pwd,
+      </if>
+      <if test="admintype != null">
+        admintype,
+      </if>
+      <if test="isfreeze != null">
+        isfreeze,
+      </if>
+      <if test="isdelete != null">
+        isdelete,
+      </if>
+      <if test="createby != null">
+        createby,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="updateby != null">
+        updateby,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="errorcount != null">
+        errorcount,
+      </if>
+      <if test="errortime != null">
+        errortime,
+      </if>
+      <if test="isclose != null">
+        isclose,
+      </if>
+      <if test="roleid != null">
+        roleid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
       <if test="username != null">
         #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="admintype != null">
+        #{admintype,jdbcType=INTEGER},
+      </if>
+      <if test="isfreeze != null">
+        #{isfreeze,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null">
+        #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorcount != null">
+        #{errorcount,jdbcType=INTEGER},
+      </if>
+      <if test="errortime != null">
+        #{errortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isclose != null">
+        #{isclose,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -135,8 +244,50 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
       <if test="record.username != null">
         username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.realname != null">
+        realname = #{record.realname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwd != null">
+        pwd = #{record.pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.admintype != null">
+        admintype = #{record.admintype,jdbcType=INTEGER},
+      </if>
+      <if test="record.isfreeze != null">
+        isfreeze = #{record.isfreeze,jdbcType=INTEGER},
+      </if>
+      <if test="record.isdelete != null">
+        isdelete = #{record.isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="record.createby != null">
+        createby = #{record.createby,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateby != null">
+        updateby = #{record.updateby,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatetime != null">
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.errorcount != null">
+        errorcount = #{record.errorcount,jdbcType=INTEGER},
+      </if>
+      <if test="record.errortime != null">
+        errortime = #{record.errortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.isclose != null">
+        isclose = #{record.isclose,jdbcType=INTEGER},
+      </if>
+      <if test="record.roleid != null">
+        roleid = #{record.roleid,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null">
@@ -146,7 +297,21 @@
   <update id="updateByExample" parameterType="map">
     update sys_user
     set id = #{record.id,jdbcType=INTEGER},
-      username = #{record.username,jdbcType=VARCHAR}
+      phone = #{record.phone,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      realname = #{record.realname,jdbcType=VARCHAR},
+      pwd = #{record.pwd,jdbcType=VARCHAR},
+      admintype = #{record.admintype,jdbcType=INTEGER},
+      isfreeze = #{record.isfreeze,jdbcType=INTEGER},
+      isdelete = #{record.isdelete,jdbcType=INTEGER},
+      createby = #{record.createby,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      updateby = #{record.updateby,jdbcType=INTEGER},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      errorcount = #{record.errorcount,jdbcType=INTEGER},
+      errortime = #{record.errortime,jdbcType=TIMESTAMP},
+      isclose = #{record.isclose,jdbcType=INTEGER},
+      roleid = #{record.roleid,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -154,15 +319,71 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.hy.yyzx.common.model.SysUser">
     update sys_user
     <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
       <if test="username != null">
         username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null">
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="pwd != null">
+        pwd = #{pwd,jdbcType=VARCHAR},
+      </if>
+      <if test="admintype != null">
+        admintype = #{admintype,jdbcType=INTEGER},
+      </if>
+      <if test="isfreeze != null">
+        isfreeze = #{isfreeze,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createby != null">
+        createby = #{createby,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateby != null">
+        updateby = #{updateby,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="errorcount != null">
+        errorcount = #{errorcount,jdbcType=INTEGER},
+      </if>
+      <if test="errortime != null">
+        errortime = #{errortime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isclose != null">
+        isclose = #{isclose,jdbcType=INTEGER},
+      </if>
+      <if test="roleid != null">
+        roleid = #{roleid,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.hy.yyzx.common.model.SysUser">
     update sys_user
-    set username = #{username,jdbcType=VARCHAR}
+    set phone = #{phone,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      realname = #{realname,jdbcType=VARCHAR},
+      pwd = #{pwd,jdbcType=VARCHAR},
+      admintype = #{admintype,jdbcType=INTEGER},
+      isfreeze = #{isfreeze,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      createby = #{createby,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updateby = #{updateby,jdbcType=INTEGER},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      errorcount = #{errorcount,jdbcType=INTEGER},
+      errortime = #{errortime,jdbcType=TIMESTAMP},
+      isclose = #{isclose,jdbcType=INTEGER},
+      roleid = #{roleid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

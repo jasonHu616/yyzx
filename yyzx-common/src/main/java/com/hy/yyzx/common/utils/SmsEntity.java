@@ -3,6 +3,9 @@ package com.hy.yyzx.common.utils;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 短信发送实体
+ */
 public class SmsEntity {
 
     private String nationCode;//区号
@@ -11,7 +14,7 @@ public class SmsEntity {
     //templateId7839对应的内容是"您的验证码是: {1}"
     private Integer templateId;//短信编码
     private String[] params;//参数
-    //msSign = "国医在线"; // NOTE: 签名参数使用的是`签名内容`，而不是`签名ID`。这里的签名"腾讯云"只是一个示例，真实的签名需要在短信控制台申请。
+    //msSign = "云医在线"; // NOTE: 签名参数使用的是`签名内容`，而不是`签名ID`。这里的签名"腾讯云"只是一个示例，真实的签名需要在短信控制台申请。
     private String sign;
     private String extend;
     private String ext;

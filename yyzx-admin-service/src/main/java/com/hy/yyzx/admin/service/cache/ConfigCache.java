@@ -1,14 +1,20 @@
 package com.hy.yyzx.admin.service.cache;
 
+import com.hy.yyzx.admin.service.service.SysConfigService;
+import com.hy.yyzx.common.model.SysConfig;
+import com.hy.yyzx.common.model.SysConfigExample;
+import com.hy.yyzx.common.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * @author DGY 2019年8月22日 17:50:21
+ * @Author: Jason
+ * @DateTime: 2020/4/12 20:05
+ * @Description: 配置缓存
  */
 @Component
 public class ConfigCache {
-   /* @Autowired
+    @Autowired
     RedisUtil redisUtil;
 
     @Autowired
@@ -18,24 +24,24 @@ public class ConfigCache {
         return "config";
     }
 
-    *//**
+    /**
      * 保存配置缓存
      * @param sysConfig
      * @return
-     *//*
+     */
     public boolean setConfig(SysConfig sysConfig){
-       if(sysConfig==null){
-           return false;
-       }
-       return redisUtil.set(getKey()+":"+sysConfig.getKeycode(),sysConfig);
+        if(sysConfig==null){
+            return false;
+        }
+        return redisUtil.set(getKey()+":"+sysConfig.getKeycode(),sysConfig);
     }
 
-    *//**
+    /**
      * 读起配置缓存
      * @param keycode
      * @param refresh 是否刷新缓存
      * @return
-     *//*
+     */
     public SysConfig getConfig(String keycode,boolean refresh){
         if(keycode==null || keycode.equals("")){
             return null;
@@ -48,5 +54,5 @@ public class ConfigCache {
             setConfig(config);
         }
         return config;
-    }*/
+    }
 }

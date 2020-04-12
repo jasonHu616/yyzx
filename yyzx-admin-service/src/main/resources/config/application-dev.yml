@@ -36,7 +36,7 @@ spring:
         min-idle: 0
         max-idle: 8
   datasource:
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://localhost:3306/yyzx?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
     username: root
 #    password: 123sql&
     password: 123456

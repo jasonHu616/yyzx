@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hy.yyzx.admin.service.mapper.SysConfigMapper">
+  <resultMap id="BaseResultMap" type="com.hy.yyzx.common.model.SysConfig">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="keycode" jdbcType="VARCHAR" property="keycode" />
+    <result column="typecode" jdbcType="VARCHAR" property="typecode" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="groupid" jdbcType="INTEGER" property="groupid" />
+    <result column="options" jdbcType="VARCHAR" property="options" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="ordernum" jdbcType="INTEGER" property="ordernum" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, keycode, typecode, title, groupid, options, remark, value, ordernum
+  </sql>
+  <select id="selectByExample" parameterType="com.hy.yyzx.common.model.SysConfigExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from sys_config
+    <if test="groupByClause != null">
+      group by ${groupByClause}
+    </if>
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sys_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hy.yyzx.common.model.SysConfigExample">
+    delete from sys_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hy.yyzx.common.model.SysConfig">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_config (keycode, typecode, title, 
+      groupid, options, remark, 
+      value, ordernum)
+    values (#{keycode,jdbcType=VARCHAR}, #{typecode,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{groupid,jdbcType=INTEGER}, #{options,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{value,jdbcType=VARCHAR}, #{ordernum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hy.yyzx.common.model.SysConfig">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="keycode != null">
+        keycode,
+      </if>
+      <if test="typecode != null">
+        typecode,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+      <if test="options != null">
+        options,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="ordernum != null">
+        ordernum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="keycode != null">
+        #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="typecode != null">
+        #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null">
+        #{ordernum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hy.yyzx.common.model.SysConfigExample" resultType="java.lang.Long">
+    select count(1) from sys_config
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update sys_config
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.keycode != null">
+        keycode = #{record.keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typecode != null">
+        typecode = #{record.typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.groupid != null">
+        groupid = #{record.groupid,jdbcType=INTEGER},
+      </if>
+      <if test="record.options != null">
+        options = #{record.options,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.value != null">
+        value = #{record.value,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ordernum != null">
+        ordernum = #{record.ordernum,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update sys_config
+    set id = #{record.id,jdbcType=INTEGER},
+      keycode = #{record.keycode,jdbcType=VARCHAR},
+      typecode = #{record.typecode,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      groupid = #{record.groupid,jdbcType=INTEGER},
+      options = #{record.options,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      value = #{record.value,jdbcType=VARCHAR},
+      ordernum = #{record.ordernum,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hy.yyzx.common.model.SysConfig">
+    update sys_config
+    <set>
+      <if test="keycode != null">
+        keycode = #{keycode,jdbcType=VARCHAR},
+      </if>
+      <if test="typecode != null">
+        typecode = #{typecode,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=INTEGER},
+      </if>
+      <if test="options != null">
+        options = #{options,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null">
+        ordernum = #{ordernum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hy.yyzx.common.model.SysConfig">
+    update sys_config
+    set keycode = #{keycode,jdbcType=VARCHAR},
+      typecode = #{typecode,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      groupid = #{groupid,jdbcType=INTEGER},
+      options = #{options,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      value = #{value,jdbcType=VARCHAR},
+      ordernum = #{ordernum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

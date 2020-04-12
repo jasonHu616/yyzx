@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author Jason createby 2020-04-10
+ * @Author: Jason
+ * @DateTime: 2020/4/12 20:08
+ * @Description: sochet缓存
  */
 @Component
 public class AdminSocketCache {
@@ -26,10 +28,10 @@ public class AdminSocketCache {
      * @return
      */
     public boolean setSession(String authtoken, Session session){
-       if(authtoken==null || session==null){
-           return false;
-       }
-       return redisUtil.set(getKey()+":"+authtoken,session,60*60*24*5);
+        if(authtoken==null || session==null){
+            return false;
+        }
+        return redisUtil.set(getKey()+":"+authtoken,session,60*60*24*5);
     }
 
     /**
@@ -41,7 +43,7 @@ public class AdminSocketCache {
         if(authtoken==null){
             return null;
         }
-        return redisUtil.get(getKey()+":"+authtoken, Session.class);
+        return redisUtil.get(getKey()+":"+authtoken,Session.class);
     }
 
     /**
@@ -57,7 +59,7 @@ public class AdminSocketCache {
     }
 
     public List<Session> getSessions(){
-        List<Session> sessionList=redisUtil.getList(getKey(), Session.class);
+        List<Session> sessionList=redisUtil.getList(getKey(),Session.class);
         if (sessionList==null){
             return new ArrayList<>();
         }
