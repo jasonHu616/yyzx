@@ -1,0 +1,40 @@
+upload:
+  root-dir: ${dirs.upload-dir}
+  no-define:
+    allow: "*"
+    deny: "exe,jsp,php,asp,aspx"
+    max-size: 120MB
+  define:
+    files:
+      dir: "files"
+      allow: "*"
+      deny: "exe,jsp,php,asp,aspx"
+      max-size: 100MB
+    editor:
+       dir: "editor"
+       deny: "exe,jsp,php,asp,aspx"
+       max-size: 100MB
+    article:
+      dir: "article"
+      allow: "jpg,jpeg,png"
+      max-size: 5MB
+    doctor:
+      dir: "doctor"
+      allow: "jpg,jpeg,png"
+      max-size: 10MB
+    config:
+      dir: "config"
+      allow: "jpg,jpeg,png"
+      max-size: 5MB
+    banner:
+      dir: "banner"
+      allow: "jpg,jpeg,png,bmp,gif,mp4,ogg,flv,avi,wmv,rmvb"
+      max-size: 100MB
+    excel:
+      dir: "excel"
+      allow: "xls,xlsx"
+      max-size: 10MB
+    hospital:
+      dir: "hospital"
+      allow: "jpg,jpeg,png,bmp,gif,ico"
+      max-size: 10MB

@@ -1,0 +1,91 @@
+server:
+  port: 8080
+  compression:
+    enabled: true
+  error:
+    include-exception: true
+
+logging:
+  file: e:/logs/yyzx.log
+  level:
+    root: info
+  pattern:
+    level: INFO
+
+debug: true
+
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: "/swagger/api-docs"
+
+swagger2:
+  enable: true
+
+spring:
+  redis:
+    database: 14
+    host: 94.191.51.164
+    port: 6379
+    password: qh&3215@deo
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: 3000ms
+        min-idle: 0
+        max-idle: 8
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai
+    username: root
+#    password: 123sql&
+    password: 123456
+    druid:
+      filters: stat,wall,slf4j
+      stat-view-servlet:
+        enabled: true
+        url-pattern: "/druid/*"
+        login-username: admin
+        login-password: 123456
+        allow: "192.168.2.110,127.0.0.1"
+      stat:
+        enabled: true
+        db-type: mysql
+        log-slow-sql: true
+        slow-sql-millis: 2000
+        login-username: admin
+        login-password: 123456
+      wall:
+        enabled: true
+        db-type: mysql
+        config:
+          delete-allow: true
+          drop-table-allow: false
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+        session-stat-enable: true
+
+
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  type-aliases-package: com.hy.yyzx.common.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: false #叫做reasonable分页参数合理化，3.3.0以上版本可用，默认是false。 启用合理化时，如果pageNum<1会查询第一页，如果pageNum>pages会查询最后一页； 禁用合理化时，如果pageNum<1或pageNum>pages会返回空数据。
+    supportMethodsArguments: true
+    params: count=countSql
+
+dirs:
+  upload-dir: D:\\dev\\uploads
+  #upload-dir: H:\\dev\\uploads
+
+# 平台基本配置
+base:
+  url:

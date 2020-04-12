@@ -1,0 +1,56 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: yyzx-admin-service
+  profiles:
+    active: dev, upload
+  devtools:
+    restart:
+      exclude: static/**
+  mvc:
+    static-path-pattern: /**
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: "GMT+8"
+  cache:
+    redis:
+      key-prefix: "yyzx"
+      use-key-prefix: true
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    platform: mysql
+    druid:
+      initial-size: 20
+      test-on-borrow: false
+      max-active: 100
+      min-idle: 10
+      max-wait: 5000
+      validation-query: "select 1"
+  servlet:
+    multipart:
+      max-request-size: 200MB
+      max-file-size: 200MB
+  data:
+    web:
+      pageable:
+        one-indexed-parameters: true
+
+cors:
+  allowedOrigins: "*"
+  allowedMethods: GET,POST,DELETE,PUT,OPTIONS
+  allowedHeaders: Origin,X-Requested-With,Content-Type,Accept,Accept-Encoding,Accept-Language,Host,Referer,Connection,User-Agent,Authorization
+
+
+jwt:
+  header: Authorization
+  secret: w-oasis123456
+  token-length: 128
+  single-login: true
+  expiration: 7200
+  token-prefix: AuthToken
+  auth-url-prefix: "/auth"
+  login-url: "${jwt.auth-url-prefix}/login"
+  refresh-url: "${jwt.auth-url-prefix}/refresh"
+  logout-url: "${jwt.auth-url-prefix}/logout"
