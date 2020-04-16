@@ -30,6 +30,7 @@
          <module>yyzx-his-api</module>-->
         <module>yyzx-common</module>
         <module>yyzx-admin-service</module>
+        <module>yyzx-pay-api</module>
     </modules>
 
     <dependencies>
