@@ -1,7 +1,7 @@
 package com.hy.yyzx.pay;
 
 import com.alipay.api.AlipayApiException;
-import com.hy.yyzx.pay.alipay.Alipay;
+import com.hy.yyzx.pay.alipay.AlipayUtils;
 
 /**
  * @Author: Jason
@@ -11,7 +11,7 @@ import com.hy.yyzx.pay.alipay.Alipay;
 public class Test {
 
     public static void main(String[] args) {
-        Alipay alipay=new Alipay();
+        AlipayUtils alipay=new AlipayUtils();
         try {
             alipay.alipay();
         } catch (AlipayApiException e) {
