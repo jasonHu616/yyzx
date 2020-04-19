@@ -5,6 +5,7 @@ import com.hy.yyzx.admin.service.security.vo.UserClaims;
 import com.hy.yyzx.common.utils.RedisUtil;
 import com.hy.yyzx.common.utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -14,6 +15,7 @@ import java.util.Set;
  * @DateTime: 2020/4/12 18:33
  * @Description: JwtToken工具
  */
+@Component
 public class JwtTokenUtil implements Serializable {
 
     private static final long serialVersionUID = -7032855166562047598L;

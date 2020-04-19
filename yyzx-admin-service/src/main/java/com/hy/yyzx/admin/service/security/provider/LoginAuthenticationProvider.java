@@ -13,8 +13,11 @@ import com.hy.yyzx.common.utils.JSONUtils;
 import com.hy.yyzx.common.utils.PassWordHasher;
 import com.hy.yyzx.common.utils.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,6 +35,9 @@ import java.util.List;
  * @DateTime: 2020/4/12 18:43
  * @Description: 登录认证类
  */
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class LoginAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     SysUserService sysUserService;

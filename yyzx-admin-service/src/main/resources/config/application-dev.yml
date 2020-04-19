@@ -24,11 +24,14 @@ swagger2:
   enable: true
 
 spring:
+  # 遇到相同名字时，是否允许覆盖注册
+  main:
+    allow-bean-definition-overriding: true
   redis:
     database: 14
-    host: 94.191.51.164
+    host: 127.0.0.1
     port: 6379
-    password: qh&3215@deo
+    password: 123456
     jedis:
       pool:
         max-active: 8

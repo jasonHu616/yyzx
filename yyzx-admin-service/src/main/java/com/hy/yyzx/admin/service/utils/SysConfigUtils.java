@@ -4,6 +4,7 @@ import com.hy.yyzx.admin.service.service.SysConfigService;
 import com.hy.yyzx.common.model.SysConfig;
 import com.hy.yyzx.common.model.SysConfigExample;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * @DateTime: 2020/4/12 19:16
  * @Description: 获取系统配置的工具类
  */
+@Component
 public class SysConfigUtils implements Serializable {
     @Autowired
     SysConfigService sysConfigService;
