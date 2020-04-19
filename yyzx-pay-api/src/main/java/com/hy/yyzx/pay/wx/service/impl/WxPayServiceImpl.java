@@ -9,6 +9,7 @@ import com.hy.yyzx.common.utils.JSONUtils;
 import com.hy.yyzx.pay.utils.RandomUtil;
 import com.hy.yyzx.pay.wx.service.WxPayService;
 import com.hy.yyzx.pay.wx.util.WXConfigUtil;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Timestamp;
@@ -20,6 +21,7 @@ import java.util.Map;
  * @DateTime: 2020/4/15 9:54
  * @Description: 微信支付实现类
  */
+@Service
 public class WxPayServiceImpl implements WxPayService {
     public static final String SPBILL_CREATE_IP = "192.168.3.12";
     public static final String NOTIFY_URL = "http://localhost";

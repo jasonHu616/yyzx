@@ -2,6 +2,7 @@ package com.hy.yyzx.pay.controller;
 
 import com.hy.yyzx.common.modules.MapEntity;
 import com.hy.yyzx.common.modules.ResultData;
+import com.hy.yyzx.pay.alipay.service.AlipayService;
 import com.hy.yyzx.pay.wx.service.WxPayService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -25,14 +26,32 @@ public class PayController {
     @Autowired
     private WxPayService wxPayService;
 
+    @Autowired
+    private AlipayService alipayService;
+
     @PostMapping(value = "/wx")
     @ApiOperation(value = "微信支付",notes = "微信支付")
-    public ResultData<MapEntity> hisPay(HttpServletRequest request){
+    public ResultData<MapEntity> wxPay(HttpServletRequest request,Integer id,Integer total,String serialnum){
+        if(id==null || total==null || serialnum==null || serialnum.equals("")){
+            return ResultData.failed("参数错误！请检查请求参数");
+        }
         try {
             return wxPayService.doUnifiedOrder(request);
         } catch (Exception e) {
             e.printStackTrace();
             return ResultData.failed("拉起微信支付失败");
+        }
+    }
+
+
+    @PostMapping(value = "/alipay")
+    @ApiOperation(value = "支付宝支付",notes = "支付宝支付")
+    public ResultData<MapEntity> aliPay(HttpServletRequest request){
+        try {
+            return alipayService.doUnifiedOrder(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResultData.failed("拉起支付宝支付失败");
         }
     }
 

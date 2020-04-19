@@ -7,6 +7,8 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradeAppPayModel;
 import com.alipay.api.request.AlipayTradeAppPayRequest;
 import com.alipay.api.response.AlipayTradeAppPayResponse;
+import com.hy.yyzx.common.modules.MapEntity;
+import com.hy.yyzx.common.modules.ResultData;
 import org.springframework.util.ClassUtils;
 
 /**
@@ -23,7 +25,7 @@ public class AlipayUtils {
      * @return
      * @throws AlipayApiException
      */
-   public  String alipay() throws AlipayApiException {
+   public ResultData<MapEntity> alipay() throws AlipayApiException {
        //构造client
        CertAlipayRequest certAlipayRequest = new CertAlipayRequest();
        //设置网关地址
@@ -65,12 +67,15 @@ public class AlipayUtils {
        try {
            //这里和普通的接口调用不同，使用的是sdkExecute
            AlipayTradeAppPayResponse response = alipayClient.sdkExecute(request);
-           System.out.println(response.getBody());//就是orderString 可以直接给客户端请求，无需再做处理。
+          // System.out.println(response.getBody());//就是orderString 可以直接给客户端请求，无需再做处理。
+           if(response!=null){
+               return ResultData.success("true",response);
+           }
        } catch (AlipayApiException e) {
            e.printStackTrace();
        }
 
-       return null;
+       return ResultData.failed("下单失败");
 
    }
 
