@@ -26,8 +26,6 @@
     </properties>
 
     <modules>
-        <!-- <module>yyzx-webapp-service</module>
-         <module>yyzx-his-api</module>-->
         <module>yyzx-common</module>
         <module>yyzx-admin-service</module>
         <module>yyzx-pay-api</module>
